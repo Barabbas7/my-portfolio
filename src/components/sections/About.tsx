@@ -1,21 +1,23 @@
-import Container from "../ui/Container";
-import ScrollReveal from "../ui/ScrollReveal";
+"use client";
+
+import ScrollReveal from "@/components/ui/ScrollReveal";
+import Container from "@/components/ui/Container";
+import CountUp from "@/components/ui/CountUp";
 
 const stats = [
-  { number: "5+", label: "Years coding" },
-  { number: "10+", label: "Projects" },
-  { number: "8+", label: "Languages" },
+  { value: 5, suffix: "+", label: "Years coding" },
+  { value: 10, suffix: "+", label: "Projects" },
+  { value: 8, suffix: "+", label: "Languages" },
 ];
 
 export default function About() {
   return (
     <section
       id="about"
-      className="px-10 py-24"
+      className="py-24"
       style={{ borderTop: "1px solid rgba(77,179,255,0.06)" }}
     >
       <Container>
-        {/* Header */}
         <ScrollReveal>
           <p
             className="font-mono text-xs tracking-widest uppercase mb-3"
@@ -34,12 +36,10 @@ export default function About() {
           </h2>
         </ScrollReveal>
 
-        {/* Inner grid */}
-        <ScrollReveal delay={0.1}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
-            {/* Left — avatar + stats */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          {/* Left — avatar + stats */}
+          <ScrollReveal>
             <div className="flex flex-col items-center gap-4">
-              {/* Avatar */}
               <div
                 className="w-28 h-28 rounded-full flex items-center justify-center font-display font-semibold text-4xl"
                 style={{
@@ -72,7 +72,7 @@ export default function About() {
                       className="font-display font-semibold text-2xl"
                       style={{ color: "var(--color-cyan)" }}
                     >
-                      {stat.number}
+                      <CountUp value={stat.value} suffix={stat.suffix} />
                     </p>
                     <p
                       className="text-xs mt-1"
@@ -84,15 +84,15 @@ export default function About() {
                 ))}
               </div>
             </div>
+          </ScrollReveal>
 
-            {/* Right — text */}
+          {/* Right — text */}
+          <ScrollReveal delay={0.15}>
             <div>
-              {/* Amber accent line */}
               <div
                 className="w-8 h-0.5 rounded-full mb-5"
                 style={{ background: "var(--color-amber)" }}
               />
-
               <p
                 className="text-sm leading-relaxed mb-4"
                 style={{ color: "var(--color-chrome)" }}
@@ -106,7 +106,6 @@ export default function About() {
                 in Addis Ababa, Ethiopia. I build things for the web — from
                 fast, scalable backends to polished, interactive frontends.
               </p>
-
               <p
                 className="text-sm leading-relaxed mb-4"
                 style={{ color: "var(--color-chrome)" }}
@@ -121,7 +120,6 @@ export default function About() {
                 — understanding how pieces connect, where things break, and how
                 to build for the long run.
               </p>
-
               <p
                 className="text-sm leading-relaxed"
                 style={{ color: "var(--color-chrome)" }}
@@ -130,8 +128,8 @@ export default function About() {
                 solving.
               </p>
             </div>
-          </div>
-        </ScrollReveal>
+          </ScrollReveal>
+        </div>
       </Container>
     </section>
   );
