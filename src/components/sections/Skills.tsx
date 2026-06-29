@@ -1,4 +1,5 @@
 import Container from "../ui/Container";
+import ScrollReveal from "../ui/ScrollReveal";
 const skillGroups = [
   {
     title: "Languages",
@@ -41,18 +42,23 @@ export default function Skills() {
     >
       <Container>
         {/* Header */}
-        <p
-          className="font-mono text-xs tracking-widest uppercase mb-3"
-          style={{ color: "var(--color-amber)" }}
-        >
-          What I work with
-        </p>
-        <h2
-          className="font-display font-semibold text-4xl mb-12"
-          style={{ color: "var(--color-near-white)", letterSpacing: "-0.02em" }}
-        >
-          Skills
-        </h2>
+        <ScrollReveal>
+          <p
+            className="font-mono text-xs tracking-widest uppercase mb-3"
+            style={{ color: "var(--color-amber)" }}
+          >
+            What I work with
+          </p>
+          <h2
+            className="font-display font-semibold text-4xl mb-12"
+            style={{
+              color: "var(--color-near-white)",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Skills
+          </h2>
+        </ScrollReveal>
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
