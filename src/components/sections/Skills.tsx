@@ -1,5 +1,10 @@
-import Container from "../ui/Container";
-import ScrollReveal from "../ui/ScrollReveal";
+"use client";
+
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import ScrollReveal from "@/components/ui/ScrollReveal";
+import Container from "@/components/ui/Container";
+
 const skillGroups = [
   {
     title: "Languages",
@@ -30,18 +35,57 @@ const skillGroups = [
   },
 ];
 
+function SkillBar({
+  name,
+  level,
+  delay,
+}: {
+  name: string;
+  level: number;
+  delay: number;
+}) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-60px" });
+
+  return (
+    <div ref={ref} className="flex items-center justify-between gap-4">
+      <span className="text-sm" style={{ color: "var(--color-chrome)" }}>
+        {name}
+      </span>
+      <div
+        className="h-0.5 rounded-full overflow-hidden"
+        style={{
+          width: "80px",
+          background: "rgba(77,179,255,0.1)",
+          flexShrink: 0,
+        }}
+      >
+        <motion.div
+          className="h-full rounded-full"
+          style={{
+            background:
+              "linear-gradient(90deg, var(--color-steel), var(--color-cyan))",
+          }}
+          initial={{ width: "0%" }}
+          animate={isInView ? { width: `${level}%` } : { width: "0%" }}
+          transition={{ duration: 1, ease: "easeOut", delay }}
+        />
+      </div>
+    </div>
+  );
+}
+
 export default function Skills() {
   return (
     <section
       id="skills"
-      className="px-10 py-24"
+      className="py-24"
       style={{
         background: "#0d1e35",
         borderTop: "1px solid rgba(77,179,255,0.06)",
       }}
     >
       <Container>
-        {/* Header */}
         <ScrollReveal>
           <p
             className="font-mono text-xs tracking-widest uppercase mb-3"
@@ -60,57 +104,30 @@ export default function Skills() {
           </h2>
         </ScrollReveal>
 
-        {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {skillGroups.map((group, index) => (
-            <ScrollReveal key={group.title} delay={index * 0.1}>
+          {skillGroups.map((group, groupIndex) => (
+            <ScrollReveal key={group.title} delay={groupIndex * 0.1}>
               <div
-                key={group.title}
                 className="rounded-xl p-5"
                 style={{
                   background: "var(--color-navy-mid)",
                   border: "1px solid rgba(77,179,255,0.08)",
                 }}
               >
-                {/* Group title */}
                 <p
                   className="font-display text-xs font-medium tracking-wide mb-4"
                   style={{ color: "var(--color-cyan)" }}
                 >
                   {group.title}
                 </p>
-
-                {/* Skills */}
                 <div className="flex flex-col gap-3">
-                  {group.skills.map((skill) => (
-                    <div
+                  {group.skills.map((skill, skillIndex) => (
+                    <SkillBar
                       key={skill.name}
-                      className="flex items-center justify-between gap-4"
-                    >
-                      <span
-                        className="text-sm"
-                        style={{ color: "var(--color-chrome)" }}
-                      >
-                        {skill.name}
-                      </span>
-                      <div
-                        className="h-0.5 rounded-full overflow-hidden"
-                        style={{
-                          width: "80px",
-                          background: "rgba(77,179,255,0.1)",
-                          flexShrink: 0,
-                        }}
-                      >
-                        <div
-                          className="h-full rounded-full"
-                          style={{
-                            width: `${skill.level}%`,
-                            background:
-                              "linear-gradient(90deg, var(--color-steel), var(--color-cyan))",
-                          }}
-                        />
-                      </div>
-                    </div>
+                      name={skill.name}
+                      level={skill.level}
+                      delay={groupIndex * 0.1 + skillIndex * 0.08}
+                    />
                   ))}
                 </div>
               </div>
