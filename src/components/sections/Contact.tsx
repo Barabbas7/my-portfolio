@@ -169,7 +169,7 @@ export default function Contact() {
                 />
                 <button
                   type="submit"
-                  className="w-full py-3 rounded-lg font-display font-semibold text-sm transition-opacity duration-150 hover:opacity-90"
+                  className="relative w-full py-3 rounded-lg font-display font-semibold text-sm overflow-hidden group"
                   style={{
                     background: "var(--color-cyan)",
                     color: "var(--color-navy-deep)",
@@ -177,7 +177,14 @@ export default function Contact() {
                     cursor: "pointer",
                   }}
                 >
-                  Send message
+                  <span
+                    className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500"
+                    style={{
+                      background:
+                        "linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent)",
+                    }}
+                  />
+                  <span className="relative z-10">Send message</span>
                 </button>
               </form>
             )}

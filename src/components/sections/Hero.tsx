@@ -91,13 +91,21 @@ export default function Hero() {
         >
           <a
             href="#work"
-            className="px-6 py-3 rounded-lg text-sm font-display font-semibold transition-opacity duration-200 hover:opacity-90"
+            className="relative px-6 py-3 rounded-lg text-sm font-display font-semibold overflow-hidden group"
             style={{
               background: "var(--color-cyan)",
               color: "var(--color-navy-deep)",
             }}
           >
-            View my work
+            {/* Shimmer layer */}
+            <span
+              className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500"
+              style={{
+                background:
+                  "linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent)",
+              }}
+            />
+            <span className="relative z-10">View my work</span>
           </a>
           <a
             href="#contact"
