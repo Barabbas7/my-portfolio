@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import Container from "@/components/ui/Container";
 
 const links = ["work", "about", "skills", "contact"];
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [hovered, setHovered] = useState<string | null>(null);
 
   return (
     <header
@@ -45,19 +46,26 @@ export default function Navbar() {
               <li key={link}>
                 <a
                   href={`#${link}`}
-                  className="font-mono text-xs tracking-wide transition-colors duration-150"
+                  className="relative font-mono text-xs tracking-wide pb-1 transition-colors duration-150"
                   style={{
-                    color: "var(--color-chrome)",
+                    color:
+                      hovered === link
+                        ? "var(--color-cyan)"
+                        : "var(--color-chrome)",
                     textDecoration: "none",
                   }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.color = "var(--color-cyan)")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.color = "var(--color-chrome)")
-                  }
+                  onMouseEnter={() => setHovered(link)}
+                  onMouseLeave={() => setHovered(null)}
                 >
                   {link}
+                  {/* Animated underline */}
+                  <motion.span
+                    className="absolute bottom-0 left-0 h-px"
+                    style={{ background: "var(--color-cyan)" }}
+                    initial={{ width: "0%" }}
+                    animate={{ width: hovered === link ? "100%" : "0%" }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                  />
                 </a>
               </li>
             ))}
