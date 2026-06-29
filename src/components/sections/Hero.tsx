@@ -1,6 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
+
+const HeroScene = dynamic(() => import("@/components/3d/HeroScene"), {
+  ssr: false,
+});
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -13,6 +18,8 @@ export default function Hero() {
       className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden pt-24"
       id="home"
     >
+      {/* 3D scene */}
+      <HeroScene />
       {/* Background glows */}
       <div
         className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] rounded-full pointer-events-none"
