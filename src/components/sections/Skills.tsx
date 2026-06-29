@@ -1,3 +1,4 @@
+import Container from "../ui/Container";
 const skillGroups = [
   {
     title: "Languages",
@@ -38,75 +39,77 @@ export default function Skills() {
         borderTop: "1px solid rgba(77,179,255,0.06)",
       }}
     >
-      {/* Header */}
-      <p
-        className="font-mono text-xs tracking-widest uppercase mb-3"
-        style={{ color: "var(--color-amber)" }}
-      >
-        What I work with
-      </p>
-      <h2
-        className="font-display font-semibold text-4xl mb-12"
-        style={{ color: "var(--color-near-white)", letterSpacing: "-0.02em" }}
-      >
-        Skills
-      </h2>
+      <Container>
+        {/* Header */}
+        <p
+          className="font-mono text-xs tracking-widest uppercase mb-3"
+          style={{ color: "var(--color-amber)" }}
+        >
+          What I work with
+        </p>
+        <h2
+          className="font-display font-semibold text-4xl mb-12"
+          style={{ color: "var(--color-near-white)", letterSpacing: "-0.02em" }}
+        >
+          Skills
+        </h2>
 
-      {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {skillGroups.map((group) => (
-          <div
-            key={group.title}
-            className="rounded-xl p-5"
-            style={{
-              background: "var(--color-navy-mid)",
-              border: "1px solid rgba(77,179,255,0.08)",
-            }}
-          >
-            {/* Group title */}
-            <p
-              className="font-display text-xs font-medium tracking-wide mb-4"
-              style={{ color: "var(--color-cyan)" }}
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {skillGroups.map((group) => (
+            <div
+              key={group.title}
+              className="rounded-xl p-5"
+              style={{
+                background: "var(--color-navy-mid)",
+                border: "1px solid rgba(77,179,255,0.08)",
+              }}
             >
-              {group.title}
-            </p>
+              {/* Group title */}
+              <p
+                className="font-display text-xs font-medium tracking-wide mb-4"
+                style={{ color: "var(--color-cyan)" }}
+              >
+                {group.title}
+              </p>
 
-            {/* Skills */}
-            <div className="flex flex-col gap-3">
-              {group.skills.map((skill) => (
-                <div
-                  key={skill.name}
-                  className="flex items-center justify-between gap-4"
-                >
-                  <span
-                    className="text-sm"
-                    style={{ color: "var(--color-chrome)" }}
-                  >
-                    {skill.name}
-                  </span>
+              {/* Skills */}
+              <div className="flex flex-col gap-3">
+                {group.skills.map((skill) => (
                   <div
-                    className="h-0.5 rounded-full overflow-hidden"
-                    style={{
-                      width: "80px",
-                      background: "rgba(77,179,255,0.1)",
-                      flexShrink: 0,
-                    }}
+                    key={skill.name}
+                    className="flex items-center justify-between gap-4"
                   >
+                    <span
+                      className="text-sm"
+                      style={{ color: "var(--color-chrome)" }}
+                    >
+                      {skill.name}
+                    </span>
                     <div
-                      className="h-full rounded-full"
+                      className="h-0.5 rounded-full overflow-hidden"
                       style={{
-                        width: `${skill.level}%`,
-                        background:
-                          "linear-gradient(90deg, var(--color-steel), var(--color-cyan))",
+                        width: "80px",
+                        background: "rgba(77,179,255,0.1)",
+                        flexShrink: 0,
                       }}
-                    />
+                    >
+                      <div
+                        className="h-full rounded-full"
+                        style={{
+                          width: `${skill.level}%`,
+                          background:
+                            "linear-gradient(90deg, var(--color-steel), var(--color-cyan))",
+                        }}
+                      />
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      </Container>
     </section>
   );
 }

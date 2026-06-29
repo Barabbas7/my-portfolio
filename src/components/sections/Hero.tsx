@@ -3,7 +3,7 @@
 export default function Hero() {
   return (
     <section
-      className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden pt-24"
       id="home"
     >
       {/* Background glows */}
