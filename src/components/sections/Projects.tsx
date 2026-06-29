@@ -2,6 +2,7 @@
 
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import Container from "@/components/ui/Container";
+import { motion } from "framer-motion";
 
 const projects = [
   {
@@ -66,8 +67,8 @@ export default function Projects() {
               delay={index * 0.1}
               className={project.featured ? "md:col-span-2" : ""}
             >
-              <div
-                className={`relative rounded-xl p-6 h-full transition-all duration-200 ${
+              <motion.div
+                className={`relative rounded-xl p-6 h-full cursor-pointer ${
                   project.featured
                     ? "grid md:grid-cols-2 gap-6 items-center"
                     : ""
@@ -76,12 +77,25 @@ export default function Projects() {
                   background: "var(--color-navy-mid)",
                   border: "1px solid rgba(77,179,255,0.1)",
                 }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.borderColor = "rgba(77,179,255,0.35)")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.borderColor = "rgba(77,179,255,0.1)")
-                }
+                whileHover={{
+                  scale: 1.02,
+                  borderColor: "rgba(77,179,255,0.4)",
+                  transition: { duration: 0.2 },
+                }}
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const x = e.clientX - rect.left;
+                  const y = e.clientY - rect.top;
+                  e.currentTarget.style.background = `
+      radial-gradient(200px circle at ${x}px ${y}px,
+      rgba(77,179,255,0.06),
+      transparent 60%),
+      var(--color-navy-mid)
+    `;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "var(--color-navy-mid)";
+                }}
               >
                 <div
                   className="absolute top-0 right-0 w-32 h-32 rounded-full pointer-events-none"
@@ -151,7 +165,7 @@ export default function Projects() {
                     </span>
                   </div>
                 )}
-              </div>
+              </motion.div>
             </ScrollReveal>
           ))}
         </div>
