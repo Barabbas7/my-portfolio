@@ -1,5 +1,12 @@
 "use client";
 
+import { motion } from "framer-motion";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
 export default function Hero() {
   return (
     <section
@@ -22,77 +29,102 @@ export default function Hero() {
         }}
       />
 
-      {/* Eyebrow */}
-      <p
-        className="font-mono text-xs tracking-widest uppercase mb-5 relative z-10"
-        style={{ color: "var(--color-cyan)" }}
+      {/* Animated content */}
+      <motion.div
+        className="flex flex-col items-center relative z-10"
+        initial="hidden"
+        animate="visible"
+        variants={{ visible: { transition: { staggerChildren: 0.12 } } }}
       >
-        Software Engineer · AASTU · Addis Ababa
-      </p>
+        {/* Eyebrow */}
+        <motion.p
+          variants={fadeUp}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="font-mono text-xs tracking-widest uppercase mb-5"
+          style={{ color: "var(--color-cyan)" }}
+        >
+          Software Engineer · AASTU · Addis Ababa
+        </motion.p>
 
-      {/* Name */}
-      <h1
-        className="font-display font-semibold leading-none tracking-tight relative z-10"
-        style={{
-          fontSize: "clamp(64px, 12vw, 96px)",
-          color: "var(--color-near-white)",
-          letterSpacing: "-0.03em",
-        }}
-      >
-        Daniel
-        <br />
-        <span style={{ color: "var(--color-cyan)" }}>Kebede</span>
-      </h1>
-
-      {/* Divider */}
-      <div
-        className="w-10 h-0.5 rounded-full my-6 relative z-10"
-        style={{
-          background:
-            "linear-gradient(90deg, var(--color-amber), var(--color-cyan))",
-        }}
-      />
-
-      {/* Tagline */}
-      <p
-        className="text-base max-w-sm leading-relaxed mb-10 relative z-10"
-        style={{ color: "var(--color-chrome)" }}
-      >
-        Building systems that think, scale, and endure.
-      </p>
-
-      {/* CTAs */}
-      <div className="flex gap-3 relative z-10">
-        <a
-          href="#work"
-          className="px-6 py-3 rounded-lg text-sm font-display font-semibold transition-opacity duration-200 hover:opacity-90"
+        {/* Name */}
+        <motion.h1
+          variants={fadeUp}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="font-display font-semibold leading-none tracking-tight"
           style={{
-            background: "var(--color-cyan)",
-            color: "var(--color-navy-deep)",
+            fontSize: "clamp(64px, 12vw, 96px)",
+            color: "var(--color-near-white)",
+            letterSpacing: "-0.03em",
           }}
         >
-          View my work
-        </a>
-        <a
-          href="#contact"
-          className="px-6 py-3 rounded-lg text-sm font-display transition-colors duration-200"
+          Daniel
+          <br />
+          <span style={{ color: "var(--color-cyan)" }}>Kebede</span>
+        </motion.h1>
+
+        {/* Divider */}
+        <motion.div
+          variants={fadeUp}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="w-10 h-0.5 rounded-full my-6"
           style={{
-            border: "1px solid var(--color-steel)",
-            color: "var(--color-chrome)",
+            background:
+              "linear-gradient(90deg, var(--color-amber), var(--color-cyan))",
           }}
-          onMouseEnter={(e) =>
-            (e.currentTarget.style.borderColor = "var(--color-cyan)")
-          }
-          onMouseLeave={(e) =>
-            (e.currentTarget.style.borderColor = "var(--color-steel)")
-          }
+        />
+
+        {/* Tagline */}
+        <motion.p
+          variants={fadeUp}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-base max-w-sm leading-relaxed mb-10"
+          style={{ color: "var(--color-chrome)" }}
         >
-          Get in touch
-        </a>
-      </div>
+          Building systems that think, scale, and endure.
+        </motion.p>
+
+        {/* CTAs */}
+        <motion.div
+          variants={fadeUp}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="flex gap-3"
+        >
+          <a
+            href="#work"
+            className="px-6 py-3 rounded-lg text-sm font-display font-semibold transition-opacity duration-200 hover:opacity-90"
+            style={{
+              background: "var(--color-cyan)",
+              color: "var(--color-navy-deep)",
+            }}
+          >
+            View my work
+          </a>
+          <a
+            href="#contact"
+            className="px-6 py-3 rounded-lg text-sm font-display transition-colors duration-200"
+            style={{
+              border: "1px solid var(--color-steel)",
+              color: "var(--color-chrome)",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.borderColor = "var(--color-cyan)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.borderColor = "var(--color-steel)")
+            }
+          >
+            Get in touch
+          </a>
+        </motion.div>
+      </motion.div>
 
       {/* Scroll hint */}
-      <div className="absolute bottom-10 flex flex-col items-center gap-2">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.8 }}
+        className="absolute bottom-10 flex flex-col items-center gap-2"
+      >
         <span
           className="font-mono text-xs tracking-widest opacity-60"
           style={{ color: "var(--color-cyan)" }}
@@ -106,7 +138,7 @@ export default function Hero() {
               "linear-gradient(180deg, var(--color-cyan), transparent)",
           }}
         />
-      </div>
+      </motion.div>
     </section>
   );
 }
