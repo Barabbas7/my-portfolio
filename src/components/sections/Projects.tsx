@@ -37,7 +37,7 @@ const projects = [
 export default function Projects() {
   return (
     <section
-      id="work"
+      id="Projects"
       className="py-24"
       style={{ borderTop: "1px solid rgba(77,179,255,0.06)" }}
     >

@@ -13,7 +13,7 @@ const stats = [
 export default function About() {
   return (
     <section
-      id="about"
+      id="About"
       className="py-24"
       style={{ borderTop: "1px solid rgba(77,179,255,0.06)" }}
     >

@@ -44,7 +44,7 @@ export default function Contact() {
 
   return (
     <section
-      id="contact"
+      id="Contact"
       className="px-10 py-24"
       style={{
         background: "#0d1e35",

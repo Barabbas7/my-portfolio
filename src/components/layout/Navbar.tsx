@@ -4,8 +4,9 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Container from "@/components/ui/Container";
 import Image from "next/image";
+import { Code2 } from "lucide-react";
 
-const links = ["work", "about", "skills", "contact"];
+const links = ["Projects", "Skills", "About", "Contact"];
 
 export default function Navbar() {
   const [hovered, setHovered] = useState<string | null>(null);
@@ -32,12 +33,21 @@ export default function Navbar() {
               className="rounded-full"
               style={{ border: "1.5px solid var(--color-cyan)" }}
             />
-            <span
-              className="font-display font-medium text-sm"
-              style={{ color: "var(--color-near-white)" }}
-            >
-              Daniel Kebede {`</>`}
-            </span>
+            <div className="flex flex-col">
+              <span
+                className="font-display font-semibold text-base leading-tight"
+                style={{ color: "var(--color-near-white)" }}
+              >
+                DANIEL KEBEDE
+              </span>
+              <span
+                className="flex items-center gap-1.5 font-mono text-[10px] leading-tight"
+                style={{ color: "var(--color-cyan)" }}
+              >
+                Christian Developer{" "}
+                {/* <Code2 size={11} style={{ color: "var(--color-cyan)" }} /> */}
+              </span>
+            </div>
           </div>
 
           {/* Nav links */}
@@ -72,17 +82,21 @@ export default function Navbar() {
           </ul>
 
           {/* CTA */}
-          <button
+          <a
+            href="/Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden md:block text-xs font-display px-4 py-2 rounded-lg transition-colors duration-150"
             style={{
               border: "1px solid var(--color-cyan)",
               color: "var(--color-cyan)",
               background: "transparent",
               cursor: "pointer",
+              textDecoration: "none",
             }}
           >
             Resume ↗
-          </button>
+          </a>
         </div>
       </Container>
     </header>

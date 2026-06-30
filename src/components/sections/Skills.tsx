@@ -78,7 +78,7 @@ function SkillBar({
 export default function Skills() {
   return (
     <section
-      id="skills"
+      id="Skills"
       className="py-24"
       style={{
         background: "#0d1e35",
