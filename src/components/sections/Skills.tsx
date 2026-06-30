@@ -7,30 +7,33 @@ import Container from "@/components/ui/Container";
 
 const skillGroups = [
   {
-    title: "Languages",
+    title: "Programming Languages",
     skills: [
       { name: "TypeScript", level: 90 },
       { name: "Python", level: 80 },
       { name: "Java", level: 70 },
       { name: "C++", level: 60 },
+      { name: "Dart", level: 70 },
     ],
   },
   {
-    title: "Frameworks",
+    title: "Frameworks & Libraries",
     skills: [
       { name: "Next.js", level: 88 },
-      { name: "React", level: 85 },
-      { name: "Node.js", level: 75 },
-      { name: "Django", level: 65 },
+      { name: "Flutter", level: 85 },
+      { name: "FastAPI", level: 65 },
+      { name: "Tailwind CSS", level: 65 },
+      { name: "Node.js", level: 50 },
     ],
   },
   {
     title: "Tools and platforms",
     skills: [
-      { name: "Git", level: 92 },
+      { name: "Figma", level: 90 },
       { name: "Docker", level: 72 },
       { name: "PostgreSQL", level: 78 },
-      { name: "Linux", level: 80 },
+      { name: "Firebase & Firestore", level: 80 },
+      { name: "Git, Github & GitLab", level: 90 },
     ],
   },
 ];

@@ -97,7 +97,7 @@ export default function Hero() {
           className="flex gap-3"
         >
           <a
-            href="#work"
+            href="#Projects"
             className="relative px-6 py-3 rounded-lg text-sm font-display font-semibold overflow-hidden group"
             style={{
               background: "var(--color-cyan)",
@@ -112,10 +112,10 @@ export default function Hero() {
                   "linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent)",
               }}
             />
-            <span className="relative z-10">View my work</span>
+            <span className="relative z-10">View my works</span>
           </a>
           <a
-            href="#contact"
+            href="#Contact"
             className="px-6 py-3 rounded-lg text-sm font-display transition-colors duration-200"
             style={{
               border: "1px solid var(--color-steel)",
