@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Container from "@/components/ui/Container";
+import Image from "next/image";
 
 const links = ["work", "about", "skills", "contact"];
 
@@ -23,20 +24,19 @@ export default function Navbar() {
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <div
-              className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-display font-semibold"
-              style={{
-                border: "1.5px solid var(--color-cyan)",
-                color: "var(--color-cyan)",
-              }}
-            >
-              DK
-            </div>
+            <Image
+              src="/logo.jpg"
+              alt="Daniel Kebede logo"
+              width={36}
+              height={36}
+              className="rounded-full"
+              style={{ border: "1.5px solid var(--color-cyan)" }}
+            />
             <span
               className="font-display font-medium text-sm"
               style={{ color: "var(--color-near-white)" }}
             >
-              Daniel Kebede
+              Daniel Kebede {`</>`}
             </span>
           </div>
 
