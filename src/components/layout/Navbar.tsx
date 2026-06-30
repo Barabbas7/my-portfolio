@@ -83,10 +83,10 @@ export default function Navbar() {
 
           {/* CTA */}
           <a
-            href="/Resume.pdf"
+            href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden md:block text-xs font-display px-4 py-2 rounded-lg transition-colors duration-150"
+            className="text-xs font-display px-3 py-1.5 md:px-4 md:py-2 rounded-lg transition-colors duration-150 whitespace-nowrap"
             style={{
               border: "1px solid var(--color-cyan)",
               color: "var(--color-cyan)",
