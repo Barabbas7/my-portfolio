@@ -138,20 +138,27 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.8 }}
-        className="absolute bottom-10 flex flex-col items-center gap-2"
+        className="absolute bottom-10 flex flex-col items-center gap-2 z-10"
       >
         <span
-          className="font-mono text-xs tracking-widest opacity-60"
-          style={{ color: "var(--color-cyan)" }}
+          className="font-mono text-xs tracking-widest"
+          style={{
+            color: "var(--color-ice)",
+            textShadow:
+              "0 0 8px rgba(77,179,255,0.8), 0 0 16px rgba(77,179,255,0.4)",
+          }}
         >
-          scroll
+          Scroll
         </span>
-        <div
+        <motion.div
           className="w-px h-10"
           style={{
             background:
               "linear-gradient(180deg, var(--color-cyan), transparent)",
+            boxShadow: "0 0 8px rgba(77,179,255,0.6)",
           }}
+          animate={{ opacity: [0.5, 1, 0.5] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         />
       </motion.div>
     </section>
