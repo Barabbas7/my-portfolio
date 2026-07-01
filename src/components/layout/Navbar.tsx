@@ -83,7 +83,7 @@ export default function Navbar() {
 
           {/* CTA */}
           <a
-            href="/resume.pdf"
+            href="/Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="text-xs font-display px-3 py-1.5 md:px-4 md:py-2 rounded-lg transition-colors duration-150 whitespace-nowrap"

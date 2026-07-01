@@ -32,6 +32,24 @@ const projects = [
     tags: ["React", "Firebase", "PWA"],
     link: "#",
   },
+  {
+    number: "04",
+    featured: false,
+    title: "Project Delta",
+    description:
+      "A mobile-first web app with real-time features built for reliability and offline capability.",
+    tags: ["React", "Firebase", "PWA"],
+    link: "#",
+  },
+  {
+    number: "05",
+    featured: false,
+    title: "Project Epsilon",
+    description:
+      "A mobile-first web app with real-time features built for reliability and offline capability.",
+    tags: ["React", "Firebase", "PWA"],
+    link: "#",
+  },
 ];
 
 export default function Projects() {

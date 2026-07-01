@@ -21,13 +21,13 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Daniel Kebede — Software Engineer",
+  title: "Daniel Kebede | Software Engineer",
   description:
     "5th year software engineering student at AASTU. Building systems that think, scale, and endure.",
   openGraph: {
-    title: "Daniel Kebede — Software Engineer",
+    title: "Daniel Kebede | Software Engineer",
     description: "5th year software engineering student at AASTU.",
-    url: "https://your-domain.vercel.app",
+    url: "https://daniel-kebede.vercel.app",
     siteName: "Daniel Kebede",
   },
 };

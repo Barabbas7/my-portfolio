@@ -3,20 +3,37 @@
 import { useState } from "react";
 import Container from "../ui/Container";
 import ScrollReveal from "../ui/ScrollReveal";
+import { FaTelegram, FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { sendEmail } from "@/app/actions/sendEmail";
 
 const socials = [
   {
-    icon: "→",
-    label: "github.com/Barabbas7",
+    icon: FaTelegram,
+    label: "Telegram: @Barabbas218",
+    href: "https://t.me/Barabbas218",
+  },
+  {
+    icon: FaGithub,
+    label: "Github: github.com/Barabbas7",
     href: "https://github.com/Barabbas7",
   },
-  { icon: "→", label: "linkedin.com/in/danielkebede", href: "#" },
-  { icon: "→", label: "daniel@email.com", href: "mailto:daniel@email.com" },
+  {
+    icon: FaLinkedin,
+    label: "Linkedin: linkedin.com/in/barabbas218",
+    href: "https://www.linkedin.com/in/barabbas218",
+  },
+  {
+    icon: FaEnvelope,
+    label: "Email: barabbas218@email.com",
+    href: "mailto:barabbas218@email.com",
+  },
 ];
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
 
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -24,9 +41,18 @@ export default function Contact() {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSent(true);
+    setStatus("loading");
+
+    const result = await sendEmail(form);
+
+    if (result.success) {
+      setStatus("success");
+      setForm({ name: "", email: "", message: "" });
+    } else {
+      setStatus("error");
+    }
   }
 
   const inputStyle = {
@@ -84,34 +110,39 @@ export default function Contact() {
               </p>
 
               <div className="flex flex-col gap-4">
-                {socials.map((s) => (
-                  <a
-                    key={s.label}
-                    href={s.href}
-                    className="flex items-center gap-3 font-mono text-xs transition-opacity duration-150 hover:opacity-70"
-                    style={{
-                      color: "var(--color-ice)",
-                      textDecoration: "none",
-                    }}
-                  >
-                    <div
-                      className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                {socials.map((s) => {
+                  const Icon = s.icon;
+                  return (
+                    <a
+                      key={s.label}
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 font-mono text-xs transition-opacity duration-150 hover:opacity-70"
                       style={{
-                        background: "rgba(77,179,255,0.08)",
-                        border: "1px solid rgba(77,179,255,0.12)",
-                        color: "var(--color-cyan)",
+                        color: "var(--color-ice)",
+                        textDecoration: "none",
                       }}
                     >
-                      {s.icon}
-                    </div>
-                    {s.label}
-                  </a>
-                ))}
+                      <div
+                        className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                        style={{
+                          background: "rgba(77,179,255,0.08)",
+                          border: "1px solid rgba(77,179,255,0.12)",
+                          color: "var(--color-cyan)",
+                        }}
+                      >
+                        <Icon size={15} />
+                      </div>
+                      {s.label}
+                    </a>
+                  );
+                })}
               </div>
             </div>
 
             {/* Right — form */}
-            {sent ? (
+            {status === "success" ? (
               <div
                 className="rounded-xl p-8 flex flex-col items-center justify-center gap-3 text-center"
                 style={{
@@ -167,14 +198,25 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                 />
+
+                {status === "error" && (
+                  <p className="text-xs" style={{ color: "#f87171" }}>
+                    Something went wrong. Please try again or email me directly.
+                  </p>
+                )}
+
                 <button
                   type="submit"
+                  disabled={status === "loading"}
                   className="relative w-full py-3 rounded-lg font-display font-semibold text-sm overflow-hidden group"
                   style={{
-                    background: "var(--color-cyan)",
+                    background:
+                      status === "loading"
+                        ? "rgba(77,179,255,0.5)"
+                        : "var(--color-cyan)",
                     color: "var(--color-navy-deep)",
                     border: "none",
-                    cursor: "pointer",
+                    cursor: status === "loading" ? "not-allowed" : "pointer",
                   }}
                 >
                   <span
@@ -184,7 +226,9 @@ export default function Contact() {
                         "linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent)",
                     }}
                   />
-                  <span className="relative z-10">Send message</span>
+                  <span className="relative z-10">
+                    {status === "loading" ? "Sending..." : "Send message"}
+                  </span>
                 </button>
               </form>
             )}
