@@ -103,8 +103,9 @@ export default function About() {
                 >
                   5th year software engineering student at AASTU
                 </span>{" "}
-                in Addis Ababa, Ethiopia. I build things for the web — from
-                fast, scalable backends to polished, interactive frontends.
+                in Addis Ababa, Ethiopia. I build things for the web and mobile
+                - from fast, scalable backends to polished, interactive
+                frontends.
               </p>
               <p
                 className="text-sm leading-relaxed mb-4"
@@ -125,7 +126,13 @@ export default function About() {
                 style={{ color: "var(--color-chrome)" }}
               >
                 When I'm not coding, I'm thinking about the next problem worth
-                solving.
+                solving. I strive to reflect{" "}
+                <span
+                  style={{ color: "var(--color-near-white)", fontWeight: 500 }}
+                >
+                  God's Kingdom values
+                </span>{" "}
+                through my work and daily actions as a committed Christian.
               </p>
             </div>
           </ScrollReveal>

@@ -26,28 +26,28 @@ const projects = [
   {
     number: "03",
     featured: false,
-    title: "Project Gamma",
+    title: "FarmWise",
     description:
-      "A mobile-first web app with real-time features built for reliability and offline capability.",
-    tags: ["React", "Firebase", "PWA"],
+      "A smart agriculture mobile app that helps farmers make better farming decisions using climate forecasts, market insights, and personalized crop planning.",
+    tags: ["Flutter", "Next.js", "PostgreSQL", "Weather API"],
     link: "#",
   },
   {
     number: "04",
     featured: false,
-    title: "Project Delta",
+    title: "ParkIT",
     description:
-      "A mobile-first web app with real-time features built for reliability and offline capability.",
-    tags: ["React", "Firebase", "PWA"],
+      "A Flutter-based smart parking management application powered by Firebase to monitor parking space occupancy in real time and provide live availability updates to users and administrators.",
+    tags: ["Flutter", "Firebase", "Rest API", "Google Maps API"],
     link: "#",
   },
   {
     number: "05",
     featured: false,
-    title: "Project Epsilon",
+    title: "Blog Mastery",
     description:
-      "A mobile-first web app with real-time features built for reliability and offline capability.",
-    tags: ["React", "Firebase", "PWA"],
+      "An E-book website for downloading a free E-book. This website has a light, business-like design. ",
+    tags: ["Bootstrap", "JavaScript", "Vercel", "Formspree"],
     link: "#",
   },
 ];
